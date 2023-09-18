@@ -1,16 +1,26 @@
 
 import './App.css';
+import React, { Fragment } from "react";
+import "./index.css"
+import "./views/LoginView"
 
-function App() {
+import { BrowserRouter as Router } from 'react-router-dom';
+
+export function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <nav>
+          <ul>
+            <li>JAHAOKEJ</li>
+            <li>JAHAOKEJ</li>
+            <li>JAHAOKEJ</li>
+          </ul>
+          </nav>
+        </header>
+      </div>
+    </Router>
   );
 }
 
