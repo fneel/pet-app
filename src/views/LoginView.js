@@ -1,18 +1,18 @@
 import { useState } from "react";
+import { login } from "../storage/user";
 import { useRecoilState } from "recoil";
+import { userState, usersState } from "../states";
+
 
 export function LoginView({}) {
-  // Skapar en referens till "userState" global state. Den fungerar precis som "useState", förutom att den inte skapar en ny state och använder den globala staten istället.
   const [user, setUser] = useRecoilState(userState);
 
-  // Skapar en referens till "usersState" global state. Den fungerar precis som "useState", förutom att den inte skapar en ny state och använder den globala staten istället.
   const [users, setUsers] = useRecoilState(usersState);
 
-  // Denna state håller koll på vad som skrivs in i det första input fältet (username). Det behövs så att informationen kan nås när man ska logga in (vilket händer i "tryLogin" funktionen).
   const [username, setUsername] = useState("");
-  // Denna state håller koll på vad som skrivs in i det andra input fältet (password). Det behövs så att informationen kan nås när man ska logga in (vilket händer i "tryLogin" funktionen).
+  
   const [password, setPassword] = useState("");
-  // Denna state används för att informera användaren om den har skrivit in fel namn eller lösenord. Den börjar som en tom sträng eftersom man i början inte har skrivit in något än. Om man lyckas logga in på första försöket så ignoreras denna state.
+
   const [message, setMessage] = useState("");
 
   /*
