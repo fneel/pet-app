@@ -2,6 +2,12 @@ import { useState } from "react";
 import { login } from "../storage/user";
 import { useRecoilState } from "recoil";
 import { userState, usersState } from "../states";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import Row from "react-bootstrap/Row";
+import { FormGroup } from "react-bootstrap";
 
 
 export function LoginView({ }) {
@@ -36,22 +42,27 @@ export function LoginView({ }) {
 
   return (
     <>
-      <label>Username</label>
-      <input
+    <Form.Group className="mb-3" controlId="loginViewUsername">
+      <Form.Control type="email" placeholder="Username"
         value={username}
         onChange={(event) => setUsername(event.target.value)}
         required
       />
+      
       <br />
-      <label>Password</label>
-      <input
+      {/* <label>Password</label> */}
+      <Form.Group className="mb-3" controlId="loginViewPassword">
+        <Form.Control type="password" placeholder="Password" 
         value={password}
         onChange={(event) => setPassword(event.target.value)}
-        required
-      />
+        required 
+        />
+        
+</Form.Group>
       <br />
-      <button onClick={tryLogin}>Login</button>
+      <Button variant="" onClick={tryLogin}>Login</Button>
       {message}
+      </Form.Group>
     </>
   );
 }

@@ -1,1 +1,1 @@
-to do: forts med return i app.js 
+forts med bootstrap i app.js 
