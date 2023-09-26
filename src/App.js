@@ -5,6 +5,7 @@ import { tasksState, userState, usersState, viewState } from "./states";
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import { LoginView } from "./views/LoginView";
 import { loadUsers } from "./storage/user";
+import { loadTasks } from "./storage/tasks";
 
 export function App() {
   const [user, setUser] = useRecoilState(userState);
@@ -23,9 +24,63 @@ export function App() {
 
 }, []);
 
-  return <div className="App">
+  return (
+  <div className="App">
+    {user === null ? (
+      <LoginView />
+    ) : ( 
+      <div>
+        <div id="view">
+          <nav>
+            <Link to="/">Dashboard</Link>
+            {user.name === "admin" ? (
+              <>
+              <Link to="/admin/tasks">Tasks</Link>
+              <Link to="/admin/users">Users</Link>
+              </>
+            ) : (
+              <>
+              <Link to="/kid/tasks">Tasks</Link>
+              </>
+            )}
+          </nav>
+        </div>
+        <div>
+          <Routes>
+            <Route index element={
+              user.name === "admin" ? (
+                <AdminDashboardView />
+              ) : (
+                <KidDashboardView />
+              )
+            }
+            />
+            <Route
+            path="/kid/tasks"
+            element={<KidTaskListView />}
+            />
+            <Route
+            path="/kid/tasks:name"
+            element={<KidTasksView />}
+            />
+            <Route path="/admin/tasks" element={<AdminTasksView />} />
+            <Route path="/admin/users" element={<AdminUsersView />} />
+            <Route
+            path="/admin/create-user"
+            element={<AdminCreateUserView />}
+            />
+            <Route
+              path="/admin/edit-task"
+              element={<AdminEditTaskView />}
+            />
+          </Routes>
+        </div>
+      </div>
 
-  </div>;
+    )}
+
+  </div>
+  );
 }
 
 // import './App.css';
