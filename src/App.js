@@ -83,6 +83,8 @@ export function App() {
   );
 }
 
+export default App;
+
 // import './App.css';
 // import React, { Fragment } from "react";
 // import "./index.css"

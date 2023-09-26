@@ -1,6 +1,6 @@
 import { Task } from "../models/tasks";
 import { useState } from "react";
-import { saveTasks } from "../storage/task";
+import { saveTasks } from "../storage/tasks";
 import { useRecoilState } from "recoil";
 import { tasksState, viewState } from "../states";
 import { useNavigate } from "react-router-dom";

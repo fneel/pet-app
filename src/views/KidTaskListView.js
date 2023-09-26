@@ -57,7 +57,7 @@ export function KidTaskListView() {
             return (
               <tr>
                 <td>
-                  <Link to={"/kid/task/" + task.name}>{task.name}</Link>
+                  <Link to={"/kid/tasks/" + task.name}>{task.name}</Link>
                 </td>
                 <td>{kid.grade === null ? "Osatt" : kid.grade}</td>
                 <td>

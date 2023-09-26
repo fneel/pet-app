@@ -4,7 +4,7 @@ import { useRecoilState } from "recoil";
 import { userState, usersState } from "../states";
 
 
-export function LoginView({}) {
+export function LoginView({ }) {
   const [user, setUser] = useRecoilState(userState);
 
   const [users, setUsers] = useRecoilState(usersState);
