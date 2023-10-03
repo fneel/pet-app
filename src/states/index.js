@@ -1,5 +1,6 @@
 import { atom } from "recoil";
 import { User } from "../models/user";
+import { Task } from "../models/tasks";
 
 
 //state som minns vilket konto du loggat in på
@@ -18,4 +19,9 @@ export const usersState = atom({
 export const tasksState = atom({
     key: "tasks",
     default: [],
+});
+
+export const taskCheckState = atom({
+  key: "taskCheckState",
+  default: {}, // Här sparar vi användarens klick i checkboxen för varje uppgift
 });

@@ -5,27 +5,21 @@ import { useRecoilState } from "recoil";
 import { usersState, viewState } from "../states";
 import { useNavigate } from "react-router-dom";
 
-
-
 export function AdminCreateUserView({}) {
-
   const [users, setUsers] = useRecoilState(usersState);
   const navigate = useNavigate();
 
-
   const [username, setUsername] = useState("");
-
   const [password, setPassword] = useState("");
-
   const [message, setMessage] = useState("");
 
-
   const register = () => {
-    let existing = users.find((all) => all.name === username);
+    let existing = users.find((user) => user.name === username);
     if (existing !== undefined) {
       setMessage("That username is taken");
     } else {
-      let value = [...users, new User(username, password)];
+      const newUser = new User(username, password); // Skapa en ny användare med unikt ID
+      let value = [...users, newUser];
       saveUsers(value);
       setUsers(value);
       navigate("/admin/users");

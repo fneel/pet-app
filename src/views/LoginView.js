@@ -1,3 +1,5 @@
+import "../bootstrap.min.css";
+import "bootswatch/dist/minty/bootstrap.min.css";
 import { useState } from "react";
 import { login } from "../storage/user";
 import { useRecoilState } from "recoil";
@@ -7,8 +9,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
-import { FormGroup } from "react-bootstrap";
-
+import FormGroup from "react-bootstrap/FormGroup";
 
 export function LoginView({ }) {
   const [user, setUser] = useRecoilState(userState);
@@ -16,7 +17,7 @@ export function LoginView({ }) {
   const [users, setUsers] = useRecoilState(usersState);
 
   const [username, setUsername] = useState("");
-  
+
   const [password, setPassword] = useState("");
 
   const [message, setMessage] = useState("");
@@ -42,26 +43,31 @@ export function LoginView({ }) {
 
   return (
     <>
-    <Form.Group className="mb-3" controlId="loginViewUsername">
-      <Form.Control type="email" placeholder="Username"
-        value={username}
-        onChange={(event) => setUsername(event.target.value)}
-        required
-      />
-      
-      <br />
-      {/* <label>Password</label> */}
-      <Form.Group className="mb-3" controlId="loginViewPassword">
-        <Form.Control type="password" placeholder="Password" 
-        value={password}
-        onChange={(event) => setPassword(event.target.value)}
-        required 
+      <Form.Group className="mb-3" controlId="loginViewUsername">
+        <Form.Control
+          type="email"
+          placeholder="Username"
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+          required
         />
-        
-</Form.Group>
-      <br />
-      <Button variant="" onClick={tryLogin}>Login</Button>
-      {message}
+
+        <br />
+        {/* <label>Password</label> */}
+        <Form.Group className="mb-3" controlId="loginViewPassword">
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            required
+          />
+        </Form.Group>
+        <br />
+        <Button type="Submit" onClick={tryLogin}>
+          Login
+        </Button>
+        {message}
       </Form.Group>
     </>
   );
