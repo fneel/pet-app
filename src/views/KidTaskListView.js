@@ -1,11 +1,16 @@
 import { useRecoilState } from "recoil";
-import { tasksState, userState, usersState } from "../states";
+import {
+  tasksState,
+  userState,
+  usersState,
+  taskCompletedState, } from "../states";
 import { saveTasks } from "../storage/tasks";
 import { Link, useParams } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { Task } from "../models/tasks";
 import React from "react";
-import { taskCompletedState } from "../states";
+import { User } from "../models/user";
+
 
 
 export function KidTaskListView( { task }) {
@@ -22,49 +27,18 @@ export function KidTaskListView( { task }) {
   //     ...userTaskCheckState,
   //     [task.name]: checked,
   //   };
- const [isCompleted, setIsCompleted] = useRecoilState(taskCompletedState);
 
-const handleCheckboxChange = () => {
-  // Uppdatera atomens tillstånd när användaren ändrar checkboxens värde
-  setIsCompleted({ ...isCompleted, [tasks.name]: !isCompleted[tasks.name] });
-};
-  const myTasks = tasks.filter((task) => {
-    const exists = task.kids.find((kid) => kid.name === user.name);
+  const myTasks = tasks.filter((Task) => {
+    const exists = Task.users.find((User) => User.name === User.name);
     return exists;
   });
 
-    //***HÄRHÄRHÄR***//
-    //ska detta flyttas ner? kolla ch o sav3
-    const newTasks = tasks.map((t) => {
-      if (t.name === task.name) {
-        const updatedKids = t.kids.map((kid) => {
-          if (kid.name === user.name) {
-            return {
-              ...kid,
-              // rating: checked ? 1 : 0,
-            };
-          }
-          return kid;
-        });
-        return {
-          ...t,
-          kids: updatedKids,
-          // clicked: checked,
-        };
-      }
-      return t;
-    });
+ const [isCompleted, setIsCompleted] = useRecoilState(taskCompletedState);
 
-    // const updatedTaskChecks = {
-    //   ...taskChecks,
-    //   [user.id]: updatedUserTaskCheckState, // Uppdatera användarens taskChecks
-    // };
-    // setTaskChecks(updatedTaskChecks);
-
-    setTasks(newTasks);
-    saveTasks(newTasks);
-  
-
+ const handleCheckboxChange = () => {
+   // Uppdatera atomens tillstånd när användaren ändrar checkboxens värde
+   setIsCompleted({ ...isCompleted, [Task.name]: !isCompleted[Task.name] });
+ };
   return (
     <>
       <table>
@@ -92,11 +66,18 @@ const handleCheckboxChange = () => {
                     checked={userTaskCheckState[task.name]}
                     onChange={(e) => changeRating(task, e.target.checked)}
                   /> */}
-                          <input
-          type="checkbox"
-          checked={isCompleted[tasks.name]}
-          onChange={handleCheckboxChange}
-          />
+                  <input
+                    type="checkbox"
+                    id="task-checkbox"
+                    name="task-checkbox"
+                    checked={isCompleted[tasks.name]}
+                    onChange={handleCheckboxChange}
+                  />
+
+                    <div className="result">
+                      Above checkbox is {isCompleted ? "checked" : "un-checked"}.
+                    </div>
+
                 </td>
                 <td>{kid.grade === null ? "Osatt" : kid.grade}</td>
               </tr>
@@ -179,3 +160,35 @@ export default KidTaskListView;
 //       </>
 //     );
 // }
+
+    //***HÄRHÄRHÄR***//
+    //ska detta flyttas ner? kolla ch o sav3
+    // const newTasks = tasks.map((t) => {
+    //   if (t.name === task.name) {
+    //     const updatedKids = t.kids.map((kid) => {
+    //       if (kid.name === user.name) {
+    //         return {
+    //           ...kid,
+    //           // rating: checked ? 1 : 0,
+    //         };
+    //       }
+    //       return kid;
+    //     });
+    //     return {
+    //       ...t,
+    //       kids: updatedKids,
+    //       // clicked: checked,
+    //     };
+    //   }
+    //   return t;
+    // });
+
+    // const updatedTaskChecks = {
+    //   ...taskChecks,
+    //   [user.id]: updatedUserTaskCheckState, // Uppdatera användarens taskChecks
+    // };
+    // setTaskChecks(updatedTaskChecks);
+
+    // setTasks(newTasks);
+    // saveTasks(newTasks);
+  

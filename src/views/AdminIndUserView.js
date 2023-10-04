@@ -10,7 +10,7 @@ import { AdminTasksView } from "./AdminTasksView";
 export function AdminIndUserView( kidsTasks) {
   const { id } = useParams(); // Hämta id från URL
   const users = useRecoilValue(usersState); // Hämta listan med användare från Recoil
-  const { kidId } = useParams();
+  const { userId } = useParams();
   const isCompleted = useRecoilValue(taskCompletedState); // Hämta taskCheck-state
 
   // Använd id för att hitta den specifika användaren

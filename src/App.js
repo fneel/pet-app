@@ -124,17 +124,10 @@ export function App() {
 
               <Route path="/admin/tasks" element={<AdminTasksView />} />
               <Route path="/admin/users" element={<AdminUsersView />} />
-              {/* <Route
-                path="/admin/ind-user"
-                element={<AdminIndUserView />}
-              />
-              <Route
-                path="/admin/ind-user/:id"
-                element={<AdminIndUserView />}
-              /> */}
+
 
               <Route
-                path="/admin/kid/:kidId"
+                path="/admin/user/:userId"
                 element={<AdminIndUserView />} // Rendera AdminIndUserView
               />
 
