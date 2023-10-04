@@ -5,7 +5,7 @@ import "./App.css";
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { tasksState, taskCheckState, userState, usersState, viewState } from "./states";
+import { tasksState, userTasksState, userState, usersState, viewState } from "./states";
 import { Link, Router, Route, Routes, useNavigate } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { LoginView } from "./views/LoginView";
@@ -127,7 +127,7 @@ export function App() {
 
 
               <Route
-                path="/admin/user/:userId"
+                path="/admin/ind-user/:id"
                 element={<AdminIndUserView />} // Rendera AdminIndUserView
               />
 

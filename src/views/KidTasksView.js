@@ -10,6 +10,9 @@ export function KidTasksView() {
   const { name } = useParams();
 
   const task = tasks.find((all) => all.name === name);
+  if (!task) {
+    return <div>Uppgiften hittades inte</div>;
+  }
   const kid = task.kids.find((all) => all.name === user.name);
 
   return (
