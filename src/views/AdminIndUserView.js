@@ -1,15 +1,17 @@
+import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { Task } from "../models/tasks";
-import { usersState, userState, taskCheckState } from "../states";
+import { usersState, userState, taskCompletedState } from "../states";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { KidTaskListView } from "./KidTaskListView";
 import { AdminTasksView } from "./AdminTasksView";
 
-export function AdminIndUserView() {
+export function AdminIndUserView( kidsTasks) {
   const { id } = useParams(); // Hämta id från URL
   const users = useRecoilValue(usersState); // Hämta listan med användare från Recoil
-  const taskChecks = useRecoilValue(taskCheckState); // Hämta taskCheck-state
+  const { kidId } = useParams();
+  const isCompleted = useRecoilValue(taskCompletedState); // Hämta taskCheck-state
 
   // Använd id för att hitta den specifika användaren
   const user = users.find((user) => user.id === parseInt(id));
@@ -19,7 +21,7 @@ export function AdminIndUserView() {
     return <div>Användaren hittades inte.</div>;
   }
     console.log("Användare:", user);
-    console.log("taskChecks:", taskChecks);
+    // console.log(taskChecks);
 
   // Nu har du den specifika användaren i "user" att använda för att visa deras information
   return (
@@ -27,7 +29,16 @@ export function AdminIndUserView() {
       <h1>Användare: {user.name}</h1>
       <p>Lösenord: {user.password}</p>
       <h2>Uppgifter:</h2>
-      {user.tasks && (
+      <ul>
+        {kidsTasks.map((task) => (
+          <li key={task.name}>
+            Course: {task.name}
+            <br />
+            Completed: {task.isCompleted ? "Yes" : "No"}
+          </li>
+        ))}
+      </ul>
+      {/* {user.task && (
         <ul>
           {user.tasks.map((task) => (
             <li key={task.name}>
@@ -38,11 +49,10 @@ export function AdminIndUserView() {
             </li> 
           ))}
         </ul> 
-      )}
+      )} */}
 
       {/* Visa andra användarinformation här */}
     </div>
-    
   );
 
 

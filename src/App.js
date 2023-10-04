@@ -6,7 +6,7 @@ import "./App.css";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { tasksState, taskCheckState, userState, usersState, viewState } from "./states";
-import { Link, Route, Routes, useNavigate } from "react-router-dom";
+import { Link, Router, Route, Routes, useNavigate } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { LoginView } from "./views/LoginView";
 import { loadUsers } from "./storage/user";
@@ -124,7 +124,19 @@ export function App() {
 
               <Route path="/admin/tasks" element={<AdminTasksView />} />
               <Route path="/admin/users" element={<AdminUsersView />} />
-              <Route path="/admin/ind-user/:id" element={<AdminIndUserView />} />
+              {/* <Route
+                path="/admin/ind-user"
+                element={<AdminIndUserView />}
+              />
+              <Route
+                path="/admin/ind-user/:id"
+                element={<AdminIndUserView />}
+              /> */}
+
+              <Route
+                path="/admin/kid/:kidId"
+                element={<AdminIndUserView />} // Rendera AdminIndUserView
+              />
 
               <Route
                 path="/admin/create-user"

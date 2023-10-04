@@ -21,7 +21,18 @@ export const tasksState = atom({
     default: [],
 });
 
-export const taskCheckState = atom({
-  key: "taskCheckState",
-  default: {}, // Här sparar vi användarens klick i checkboxen för varje uppgift
+// export const taskCheckState = atom({
+//   key: "taskCheckState",
+//   default: {}, // Här sparar vi användarens klick i checkboxen för varje uppgift
+// });
+
+// atom för att hantera isCompleted-attributet för varje task
+export const taskCompletedState = atom({
+  key: 'taskCompletedState',
+  default: {}, // objekt för att lagra isCompleted för varje task
+});
+
+export const kidTasksState = atom({
+    key: 'kidTasksState',
+    default: {},
 });

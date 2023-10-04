@@ -1,36 +1,47 @@
 import { useRecoilState } from "recoil";
-import { tasksState, userState, taskCheckState, usersState } from "../states";
+import { tasksState, userState, usersState } from "../states";
 import { saveTasks } from "../storage/tasks";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { Task } from "../models/tasks";
+import React from "react";
+import { taskCompletedState } from "../states";
 
 
-export function KidTaskListView() {
+export function KidTaskListView( { task }) {
   const [tasks, setTasks] = useRecoilState(tasksState);
   const [user, setUser] = useRecoilState(userState);
-  const [taskChecks, setTaskChecks] = useRecoilState(taskCheckState); // Hämta taskCheck-state
+  // const [taskChecks, setTaskChecks] = useRecoilState(taskCheckState); // Hämta taskCheck-state
 
-  const userTaskCheckState = taskChecks[user.id] || {}; // Hämta användarens taskChecks eller skapa en tom om det inte finns
+  // const userTaskCheckState = taskChecks[user.id] || {}; // Hämta användarens taskChecks eller skapa en tom om det inte finns
 
+
+
+  // const changeRating = (task, checked) => {
+  //   const updatedUserTaskCheckState = {
+  //     ...userTaskCheckState,
+  //     [task.name]: checked,
+  //   };
+ const [isCompleted, setIsCompleted] = useRecoilState(taskCompletedState);
+
+const handleCheckboxChange = () => {
+  // Uppdatera atomens tillstånd när användaren ändrar checkboxens värde
+  setIsCompleted({ ...isCompleted, [tasks.name]: !isCompleted[tasks.name] });
+};
   const myTasks = tasks.filter((task) => {
     const exists = task.kids.find((kid) => kid.name === user.name);
     return exists;
   });
 
-  const changeRating = (task, checked) => {
-    const updatedUserTaskCheckState = {
-      ...userTaskCheckState,
-      [task.name]: checked,
-    };
-
+    //***HÄRHÄRHÄR***//
+    //ska detta flyttas ner? kolla ch o sav3
     const newTasks = tasks.map((t) => {
       if (t.name === task.name) {
         const updatedKids = t.kids.map((kid) => {
           if (kid.name === user.name) {
             return {
               ...kid,
-              rating: checked ? 1 : 0,
+              // rating: checked ? 1 : 0,
             };
           }
           return kid;
@@ -38,21 +49,21 @@ export function KidTaskListView() {
         return {
           ...t,
           kids: updatedKids,
-          clicked: checked,
+          // clicked: checked,
         };
       }
       return t;
     });
 
-    const updatedTaskChecks = {
-      ...taskChecks,
-      [user.id]: updatedUserTaskCheckState, // Uppdatera användarens taskChecks
-    };
-    setTaskChecks(updatedTaskChecks);
+    // const updatedTaskChecks = {
+    //   ...taskChecks,
+    //   [user.id]: updatedUserTaskCheckState, // Uppdatera användarens taskChecks
+    // };
+    // setTaskChecks(updatedTaskChecks);
 
     setTasks(newTasks);
     saveTasks(newTasks);
-  };
+  
 
   return (
     <>
@@ -76,11 +87,16 @@ export function KidTaskListView() {
                   </LinkContainer>
                 </td>
                 <td>
-                  <input
+                  {/* <input
                     type="checkbox"
                     checked={userTaskCheckState[task.name]}
                     onChange={(e) => changeRating(task, e.target.checked)}
-                  />
+                  /> */}
+                          <input
+          type="checkbox"
+          checked={isCompleted[tasks.name]}
+          onChange={handleCheckboxChange}
+          />
                 </td>
                 <td>{kid.grade === null ? "Osatt" : kid.grade}</td>
               </tr>
@@ -91,6 +107,8 @@ export function KidTaskListView() {
     </>
   );
 }
+
+export default KidTaskListView;
 
 // export function KidTaskListView() {
 //     const [tasks, setTasks] = useRecoilState
