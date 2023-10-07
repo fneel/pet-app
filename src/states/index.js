@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { User } from "../models/user";
+import { UserModel } from "../models/user";
 import { Task } from "../models/tasks";
 
 
@@ -12,13 +12,13 @@ export const userState = atom({
 //state som minns samtliga konton. Default-konto för att kunna logga in som admin
 export const usersState = atom({
     key: "users",
-    default: [new User("admin", "admin")],
+    default: [new UserModel("admin", "admin")],
 });
 
 //state som minns alla tasks
 export const tasksState = atom({
     key: "tasks",
-    default: [],
+    default: [new Task("Promenad")],
 });
 
 

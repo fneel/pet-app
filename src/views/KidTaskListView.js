@@ -10,7 +10,7 @@ import { Link, useParams } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { Task } from "../models/tasks";
 import React from "react";
-import { User } from "../models/user";
+import { UserModel } from "../models/user";
 
 // En separat funktion för att rendera varje uppgift
 function TaskItem({ task }) { //task = en enskild task 
@@ -22,7 +22,7 @@ function TaskItem({ task }) { //task = en enskild task
     const newTasks = tasks.map((t) => {
       if (t.name === task.name) {
         return { ...t, isCompleted: newCheckedValue };
-      } console.log(task)
+      } //console.log(task)
       return t;
     });
 

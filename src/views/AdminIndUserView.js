@@ -1,22 +1,32 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { usersState, taskCompletedState } from "../states";
+import { usersState, taskCompletedState, tasksState } from "../states";
 import { useParams } from "react-router-dom";
+import { Task } from "../models/tasks";
+
 
 
 export function AdminIndUserView() {
   // Hämta listan med användare från Recoil
   const users = useRecoilValue(usersState);
   const { id } = useParams();
+  const tasks = useRecoilValue(tasksState);
   const isCompleted = useRecoilValue(taskCompletedState);
 
   // Hitta den specifika användaren med hjälp av id
-  const indUser = users.find((user) => user.id === parseInt(id));
+  const indUser = users.find((user) => user.id === parseInt(id)); 
+  console.log("indUser", indUser);
 
   if (!indUser) {
     // Hantera om användaren inte hittades
     return <div>Användaren hittades inte.</div>;
+    
   }
+console.log("indUser", indUser);
+console.log("indUser.tasks", indUser.tasks);
+console.log("isCompleted", isCompleted);
+
+
 
   // Visa användarinformation
   return (
@@ -25,23 +35,23 @@ export function AdminIndUserView() {
       <p>Lösenord: {indUser.password}</p>
       <h2>Uppgifter:</h2>
       <ul>
-        {/* Kontrollera om användarens uppgifter är definierade innan du använder .map() */}
         {indUser.tasks ? (
           // Loopa igenom användarens uppgifter
           indUser.tasks.map((task) => (
             <li key={task.name}>
-              Course: {task.name}
+              Task: {task.name}
               <br />
               Completed:{" "}
               {isCompleted[`${indUser.id}-${task.name}`] ? "Yes" : "No"}
             </li>
-          ))
+          )) 
         ) : (
           <li>Inga uppgifter tillgängliga.</li>
         )}
       </ul>
     </div>
   );
+  
 }
 
 // import React from "react";
