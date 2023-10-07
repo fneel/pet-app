@@ -1,5 +1,23 @@
 forts med bootstrap O BOOTSWATCH i app.js 
 
+/AdminIndUserView
+console.log indUser och indUser.tasks fungerar bra!
+console.log indUser.tasks ger TRE tasks/objekt 
+console.log userTasks ger EN task/objekt
+{
+    "name": {
+        "name": "Task 1",
+        "isCompleted": false
+    },
+    "isCompleted": false
+}
+
+senaste error:
+Objects are not valid as a React child (found: object with keys {name, isCompleted}). If you meant to render a collection of children, use an array instead.
+    at throwOnInvalidObjectType (http://localhost:3004/static/js/bundle.js:33488:13)
+    at createChild 
+
+
 
 hur renderas inputvärden??
 

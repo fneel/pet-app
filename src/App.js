@@ -74,11 +74,14 @@ export function App() {
         <div>
           <div id="view">
             <Navbar expand="lg" className="bg-primary" data-bs-theme="dark">
+
               <LinkContainer to="/">
                 <Nav.Link>Dashboard</Nav.Link>
               </LinkContainer>
+
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
+                
                 <Nav className="mr-auto">
                   {user.name === "admin" ? (
                     <>

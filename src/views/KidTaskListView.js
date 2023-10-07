@@ -12,6 +12,8 @@ import { Task } from "../models/tasks";
 import React from "react";
 import { UserModel } from "../models/user";
 
+
+
 // En separat funktion för att rendera varje uppgift
 function TaskItem({ task }) { //task = en enskild task 
   const [tasks, setTasks] = useRecoilState(tasksState);
