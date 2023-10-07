@@ -1,6 +1,8 @@
 import { atom } from "recoil";
 import { UserModel } from "../models/user";
 import { Task } from "../models/tasks";
+import React, { useState } from "react";
+
 
 
 //state som minns vilket konto du loggat in på
@@ -32,3 +34,4 @@ export const userTasksState = atom({
     key: 'userTasksState',
     default: {},
 });
+// läs på sidan intill pga error som inte accepterar objekt som child

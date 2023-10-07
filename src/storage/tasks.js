@@ -12,6 +12,7 @@ export function loadTasks() {
     if (json ===  null) {
         return [];
     } else {
-        return JSON.parse(json);
+        return JSON.parse(json);        
     }
+    
 }

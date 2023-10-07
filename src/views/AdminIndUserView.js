@@ -53,16 +53,22 @@ import { Task } from "../models/tasks";
 // }
 
 // En separat funktion för att rendera användarens uppgifter
-function renderUserTasks({ indUser, isCompleted }) {
+export function renderUserTasks({ indUser, isCompleted }) {
+   const userTasks = indUser.tasks.find((task) => task.name);
+   if (!userTasks){
+    return <div>Inga uppgifter att visa</div>
+   }
+
   return (
     <ul>
       {indUser.tasks ? (
         // Loopa igenom användarens uppgifter
-        indUser.tasks.map((task) => (
-          <li key={task.name}>
-            Task: {JSON.stringify(task.name)}
+        indUser.tasks.map((task, index) => (
+          <li key={index}>
+            Task: {task.name}
             <br />
-            Completed: {isCompleted[`${indUser.id}-${task.name}`] ? "Yes" : "No"}
+            Completed:{" "}
+            {isCompleted[`${indUser.id}-${task.name}`] ? "Yes" : "No"}
           </li>
         ))
       ) : (
