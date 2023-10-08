@@ -42,7 +42,7 @@ export function AdminCreateUserView() {
         onChange={(event) => setPassword(event.target.value)}
       />
       <br />
-      <button variant="primary" size="lg" onClick={register}>Register</button>
+      <Button variant="primary" size="lg" onClick={register}>Register</Button>
       <br />
       {message}
       <br />

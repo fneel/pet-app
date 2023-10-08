@@ -136,3 +136,45 @@ export function App() {
 }
 
 export default App;
+
+// import './App.css';
+// import React, { Fragment } from "react";
+// import "./index.css"
+// import "./views/LoginView"
+
+// import { BrowserRouter as Router } from 'react-router-dom';
+
+// export function App() {
+//   return (
+//     <Router>
+//       <div className="App">
+//         <header className="App-header">
+//           <nav>
+//           <ul>
+//             <li>ååå</li>
+//             <li>JAHAOKEJ</li>
+//             <li>JAHAOKEJ</li>
+//           </ul>
+//           </nav>
+//         </header>
+//       </div>
+//     </Router>
+//   );
+// }
+
+// export default App;
+
+//gamla nav
+{
+  /* <Link to="/">Dashboard</Link>
+            {user.name === "admin" ? (
+              <>
+                <Link to="/admin/tasks">Tasks</Link>
+                <Link to="/admin/users">Users</Link>
+              </>
+            ) : (
+              <>
+                <Link to="/kid/tasks">Tasks</Link>
+              </> 
+            )}*/
+}
