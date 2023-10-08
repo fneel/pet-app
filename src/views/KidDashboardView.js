@@ -1,6 +1,8 @@
 
-
 export function KidDashboardView() {
-  return <>Kids Dashboard</>
-
+  return (
+    <>
+      <div className="kidDash">Startsida</div>
+    </>
+  );
 }

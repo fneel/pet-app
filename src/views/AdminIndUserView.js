@@ -1,10 +1,10 @@
-//src\views\AdminIndUserView.js
-
 
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { usersState, checkedState } from "../states";
 import { useParams, useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+
 
 export function AdminIndUserView() {
   const [users, setUsers] = useRecoilState(usersState);
@@ -13,10 +13,8 @@ export function AdminIndUserView() {
   const navigate = useNavigate();
 
   const handleDeleteUser = () => {
-    // Filtrera ut användaren som ska tas bort
     const updatedUsers = users.filter((user) => user.id !== parseInt(id));
     setUsers(updatedUsers);
-    // Navigera tillbaka till AdminUsersView
     navigate("/admin/users");
   };
 
@@ -27,7 +25,7 @@ export function AdminIndUserView() {
   }
 
   return (
-    <div>
+    <div className="indUserContainer">
       <h1>Användare: {indUser.name}</h1>
       <p>Lösenord: {indUser.password}</p>
       <h2>Uppgifter:</h2>
@@ -35,15 +33,15 @@ export function AdminIndUserView() {
         {indUser.tasks.map((task, index) => (
           <li key={index}>
             Task: {task.name}
-            <br />
-            Completed:{" "}
+           
+            Genomförd:{" "}
             {isCompleted[`${indUser.id}-${task.name}`]
-              ? "Checked"
-              : "Unchecked"}
+              ? "     ja"
+              : "     nej"}
           </li>
         ))}
       </ul>
-      <button onClick={handleDeleteUser}>Ta bort användare</button>
+      <Button onClick={handleDeleteUser}>Ta bort användare</Button>
     </div>
   );
 }

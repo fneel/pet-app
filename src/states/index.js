@@ -1,5 +1,3 @@
-//src\states\index.js
-
 import { atom } from "recoil";
 import { UserModel } from "../models/user";
 
@@ -9,7 +7,7 @@ export const userState = atom({
   default: null,
 });
 
-//state som minns samtliga konton. Default-konto för att kunna logga in som admin
+//state som minns samtliga konton. Default-konto för admin
 export const usersState = atom({
   key: "users",
   default: [new UserModel("admin", "admin")],
@@ -18,5 +16,5 @@ export const usersState = atom({
 // atom för att hantera isCompleted-attributet för varje task
 export const checkedState = atom({
   key: "checked-state",
-  default: {}, // objekt för att lagra isCompleted för varje task
+  default: {}, 
 });

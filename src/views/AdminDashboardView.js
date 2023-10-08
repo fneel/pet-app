@@ -1,3 +1,3 @@
 export function AdminDashboardView() {
-    return <>Admin Dashboard</>;
+    return <>Startsida</>;
 }

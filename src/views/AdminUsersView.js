@@ -8,21 +8,20 @@ export function AdminUsersView({}) {
   const [users, setUsers] = useRecoilState(usersState);
 
   return (
-    <div>
-      <Link to="/admin/create-user">Create user</Link>
-      <table>
+    <div className="createContainer">
+      <Link className="createUserLink" to="/admin/create-user">Create user</Link>
+      <table className="createTableContainer">
         <tbody>
           <tr>
             <th>Namn</th>
-            <th>Password</th>
+            <th>Lösenord</th>
           </tr>
           {users.map((user) => {
-            // Skapa en länk för varje användare som leder till deras unika URL
-            const userLink = `/admin/ind-user/${user.id}`; // Antag att användaren har ett unikt ID
+            const userLink = `/admin/ind-user/${user.id}`; 
 
             return (
-              <tr key={user.id}>
-                <td>
+              <tr key={user.id} className="tableRow">
+                <td className="tdUserLink">
                   <Link to={userLink}>{user.name}</Link>
                 </td>
                 <td>{user.password}</td>

@@ -1,5 +1,3 @@
-//src\views\AdminCreateUserView.js
-
 import React, { useState } from "react";
 import { UserModel } from "../models/user";
 import { saveUsers } from "../storage/user";
@@ -32,30 +30,34 @@ export function AdminCreateUserView() {
 
   return (
     <div>
-      <label>Username</label>
-      <input
-        value={username}
-        onChange={(event) => setUsername(event.target.value)}
-      />
-      <br />
-      <label>Password</label>
-      <input
-        value={password}
-        onChange={(event) => setPassword(event.target.value)}
-      />
-      <br />
-      <Button variant="primary" size="lg" onClick={register}>Register</Button>
-      <br />
-      {message}
-      <br />
+      <div className="newUserContainer">
+        <h2 className="title"> Skapa en ny användare</h2>
+        <label>Användarnamn</label>
+        <input
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+        />
+        <br />
+        <label>Lösenord</label>
+        <input
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+        <br />
 
-      {/* Lista de tre standarduppgifterna */}
-      <h2>Standard Uppgifter:</h2>
-      <ul>
-        <li>Promenad 1</li>
-        <li>Promenad 2</li>
-        <li>Promenad 3</li>
-      </ul>
+        <h4>Standarduppgifter:</h4>
+        <ul>
+          <li>Promenad - Morgon </li>
+          <li>Promenad - Eftermiddag </li>
+          <li>Promenad - Kväll </li>
+        </ul>
+        <br />
+        <Button variant="primary" size="lg" onClick={register}>
+          Skapa Användare
+        </Button>
+        <br />
+        {message}
+      </div>
     </div>
   );
 }

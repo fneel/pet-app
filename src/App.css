@@ -1,7 +1,184 @@
+* {
+  margin: 0;
+  width: 100%;
+  
+}
+  .nav-link{
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff !important;
+    padding: 1em;
+
+   
+  }
 
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
+.createContainer {
+    margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 800px;
+  justify-content: center;
+  align-items: center;
+}
+
+.createContainer a {
+  font-size: 20px;
+  color: #000000;
+}
+
+
+.createTableContainer {
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; */
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+tbody {
+  height: auto;
+  width: 100%;
+  background-color: rgba(89, 184, 164, 0.445);
+  padding: 2em;
+  justify-content: center;
+  
+}
+th {
+  text-align: start;
+  color: #224947;
+  font-size: 22px;
+  font-variant-caps: all-small-caps;
+  
+}
+td {
+  font-size: 20px;
+  color: #00000098;
+  text-align: end;
+  background-color: #22494791;
+  padding: 0.5em;
+}
+.tdUserLink {
+  text-align: start;
+  background-color: #22494791;
+  
+}
+
+.tableRow{
+  justify-content: center;
+  
+}
+
+
+
+.indUserContainer {
+  flex-direction: column;
+  display: flex;
+  padding: 10px;
+  width: 100%;
+  justify-content: center;
+
+}
+.indUserContainer button {
+  width: 50%;
+  
+}
+.indUserContainer ul {
+  width: 50%;
+  background-color: rgba(89, 184, 164, 0.445);
+  list-style: none;
+  padding: 1em;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  font-weight: bold;
+  color: #242424;
+    text-align: start;
+
+  
+
+}
+.indUserContainer h1, h2 {
+  color: rgb(50, 131, 104);
+}
+.indUserContainer p {
+  color: #000;
+ 
+}
+.newUserContainer {
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  width: 800px;
+
+}
+.newUserContainer input {
+width: 50%;
+}
+
+.newUserContainer button {
+  width: 50%;
+}
+
+
+.newUserContainer h2, h4 {
+  color: rgb(50, 131, 104);
+}
+.newUserContainer h2 {
+  margin-bottom: 2em;
+}
+
+.kidListContainer {
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 800px;
+  justify-content: center;
+  align-items: center;
+}
+.kidListH1 {
+  color: rgb(21, 40, 92);
+  align-items: center;
+  
+}
+
+.kidListUl {
+  width: 50%;
+  background-color: rgba(89, 184, 164, 0.445);
+  list-style: none;
+  padding: 1em;
+  align-items: center;
+  justify-content: center;
+
+}
+
+li {
+  width: 100%;
+  color: #000;
+}
+
+
+
+.checkClass {
+  width: 8em;
+  height: 2em;
+}
+
+.sadDog {
+  width: 8em;
+}
+
+.happyDog {
+  width: 8em;
+}

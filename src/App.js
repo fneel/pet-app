@@ -1,10 +1,7 @@
-//src\App.js
 
 import "bootswatch/dist/minty/bootstrap.min.css";
-// TODO: Note: Replace ^[theme]^ (examples: darkly, slate, cosmo, spacelab, and superhero. See https://bootswatch.com/ for current theme names.)
 import "./bootstrap.min.css";
 import "./App.css";
-
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { userState, usersState } from "./states";
@@ -30,15 +27,14 @@ export function App() {
 
   const navigate = useNavigate();
 
+
   const handleLogout = () => {
-    // Clear the user's session (set user to null or perform your logout logic)
+
     setUser(null);
-    // Navigate to the login page
-    navigate("/"); // Assuming "/" is your login page route
+
+    navigate("/"); 
   };
-  // fetch("https://bootswatch.com/api/5.json")
-  //   .then((response) => response.json())
-  //   .then((data) => console.log(data));
+
 
   useEffect(() => {
     let loaded = loadUsers();
@@ -46,16 +42,17 @@ export function App() {
       setUsers(loaded);
     }
 
-    // Check the user's role and navigate accordingly
+
     if (user) {
       if (user.name === "admin") {
-        // Navigate to AdminDashboardView for 'admin'
+
         navigate("/admin/dashboard");
       } else {
-        // Navigate to KidDashboardView for 'kid'
         navigate("/kid/dashboard");
       }
-    }
+   window.history.replaceState(null, null, "/");
+}     
+    
   }, []);
 
   return (
@@ -67,7 +64,7 @@ export function App() {
           <div id="view">
             <Navbar expand="lg" className="bg-primary" data-bs-theme="dark">
               <LinkContainer to="/">
-                <Nav.Link>Dashboard</Nav.Link>
+                <Nav.Link>Startsida</Nav.Link>
               </LinkContainer>
 
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -76,26 +73,25 @@ export function App() {
                   {user.name === "admin" ? (
                     <>
                       <LinkContainer to="/admin/users">
-                        <Nav.Link>Users</Nav.Link>
+                        <Nav.Link>Användare</Nav.Link>
                       </LinkContainer>
                     </>
                   ) : (
                     <>
                       <LinkContainer to="/kid/task-list">
-                        <Nav.Link>TaskList</Nav.Link>
+                        <Nav.Link>Promenader</Nav.Link>
                       </LinkContainer>
                       <LinkContainer to="/kid/fact">
-                        <Nav.Link>Dog Facts</Nav.Link>
+                        <Nav.Link>Fakta</Nav.Link>
                       </LinkContainer>
                     </>
                   )}
                 </Nav>
                 <Button onClick={handleLogout}>Log Out</Button>{" "}
-                {/* Add the Log Out button */}
               </Navbar.Collapse>
             </Navbar>
           </div>
-          <div>
+          <div className="pageContainer">
             <Routes>
               <Route
                 index
@@ -108,7 +104,7 @@ export function App() {
                 }
               />
               <Route
-                path="/admin/dashboard" // Add the route for AdminDashboardView
+                path="/admin/dashboard" 
                 element={<AdminDashboardView />}
               />
 
@@ -116,7 +112,7 @@ export function App() {
 
               <Route
                 path="/admin/ind-user/:id"
-                element={<AdminIndUserView />} // Rendera AdminIndUserView
+                element={<AdminIndUserView />} 
               />
 
               <Route
@@ -124,7 +120,7 @@ export function App() {
                 element={<AdminCreateUserView />}
               />
               <Route
-                path="/kid/dashboard" // Add the route for KidDashboardView
+                path="/kid/dashboard" 
                 element={<KidDashboardView />}
               />
               <Route path="/kid/task-list" element={<KidTaskListView />} />
@@ -139,44 +135,3 @@ export function App() {
 
 export default App;
 
-// import './App.css';
-// import React, { Fragment } from "react";
-// import "./index.css"
-// import "./views/LoginView"
-
-// import { BrowserRouter as Router } from 'react-router-dom';
-
-// export function App() {
-//   return (
-//     <Router>
-//       <div className="App">
-//         <header className="App-header">
-//           <nav>
-//           <ul>
-//             <li>ååå</li>
-//             <li>JAHAOKEJ</li>
-//             <li>JAHAOKEJ</li>
-//           </ul>
-//           </nav>
-//         </header>
-//       </div>
-//     </Router>
-//   );
-// }
-
-// export default App;
-
-//gamla nav
-{
-  /* <Link to="/">Dashboard</Link>
-            {user.name === "admin" ? (
-              <>
-                <Link to="/admin/tasks">Tasks</Link>
-                <Link to="/admin/users">Users</Link>
-              </>
-            ) : (
-              <>
-                <Link to="/kid/tasks">Tasks</Link>
-              </> 
-            )}*/
-}

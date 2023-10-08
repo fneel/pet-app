@@ -1,8 +1,6 @@
-import { useRecoilState } from "recoil";
-import { Link } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
+
 
 export function FactView() {
-    <div> Fact here </div>;
 
+  <div> Fakta </div>;
 }

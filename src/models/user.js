@@ -1,10 +1,9 @@
-//src\models\user.js
 
 export class UserModel {
-  static nextId = 1; // Startvärde för UserModel ID
+  static nextId = 1; 
 
   constructor(name, password) {
-    this.id = UserModel.nextId++; // Tilldela ett unikt UserModel ID och öka nästa ID för nästa användare
+    this.id = UserModel.nextId++; 
     this.name = name;
     this.password = password;
     this.tasks = [

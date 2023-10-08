@@ -1,7 +1,6 @@
-//src\storage\user.js
+
 
 export function saveUsers(users) {
-  // Uppdatera användarobjektens format innan du sparar dem
   const formattedUsers = users.map((user) => ({
     id: user.id,
     name: user.name,
@@ -17,7 +16,7 @@ export function loadUsers() {
   if (json === null) {
     return [];
   } else {
-    // Parsa JSON och skapa användarobjekt med rätt format
+
     const parsedUsers = JSON.parse(json).map((user) => ({
       id: user.id,
       name: user.name,
@@ -37,3 +36,4 @@ export function login(username, password, users) {
 
   return null;
 }
+
