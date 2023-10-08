@@ -11,7 +11,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
 import FormGroup from "react-bootstrap/FormGroup";
 
-export function LoginView({ }) {
+export function LoginView({}) {
   const [user, setUser] = useRecoilState(userState);
 
   const [users, setUsers] = useRecoilState(usersState);

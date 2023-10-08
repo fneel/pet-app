@@ -1,5 +1,13 @@
 export function saveUsers(users) {
-  localStorage.setItem("users", JSON.stringify(users));
+  // Uppdatera användarobjektens format innan du sparar dem
+  const formattedUsers = users.map((user) => ({
+    id: user.id,
+    name: user.name,
+    password: user.password,
+    tasks: user.tasks,
+  }));
+
+  localStorage.setItem("users", JSON.stringify(formattedUsers));
 }
 
 export function loadUsers() {
@@ -7,10 +15,12 @@ export function loadUsers() {
   if (json === null) {
     return [];
   } else {
-    // Parsa JSON och skapa användarobjekt med rätt ID
-    const parsedUsers = JSON.parse(json).map((user, index) => ({
-      ...user,
-      id: index + 1, // Lägg till ett unikt ID baserat på positionen i listan
+    // Parsa JSON och skapa användarobjekt med rätt format
+    const parsedUsers = JSON.parse(json).map((user) => ({
+      id: user.id,
+      name: user.name,
+      password: user.password,
+      tasks: user.tasks,
     }));
     return parsedUsers;
   }

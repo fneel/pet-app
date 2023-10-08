@@ -1,16 +1,14 @@
-import { Task } from "./tasks";
-
 export class UserModel {
-  static nextId = 1; // Startvärde för ID
+  static nextId = 1; // Startvärde för UserModel ID
 
   constructor(name, password) {
-    this.id = UserModel.nextId++; // Tilldela ett unikt ID och öka nästa ID för nästa användare
+    this.id = UserModel.nextId++; // Tilldela ett unikt UserModel ID och öka nästa ID för nästa användare
     this.name = name;
     this.password = password;
-    this.tasks = [];
+    this.tasks = [
+      { id: `${this.id}-1`, name: "Promenad 1", isCompleted: false },
+      { id: `${this.id}-2`, name: "Promenad 2", isCompleted: false },
+      { id: `${this.id}-3`, name: "Promenad 3", isCompleted: false },
+    ];
   }
-  addTask(taskName) {
-    const newTask = new Task(taskName); // Skapa en ny instans av Task
-    this.tasks.push(newTask); // Lägg till uppgiften i användarens lista
-  }
-} // task is not defined när jag klickar registrera user. inga tasks dyker upp när jag trycker 'add task'
+}
