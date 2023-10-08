@@ -3,6 +3,8 @@ import { useRecoilState } from "recoil";
 import { userState, usersState, checkedState } from "../states";
 import { Link, useParams } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
+import happyDogImage from "../pet/happydog.png";
+import sadDogImage from "../pet/saddog.png";
 
 export function KidTaskListView() {
   const [user, setUser] = useRecoilState(userState);
@@ -47,6 +49,11 @@ export function KidTaskListView() {
               checked={task.isCompleted}
               onChange={() => handleCheckboxChange(task.name)}
             />
+            {task.isCompleted ? (
+              <img src={happyDogImage} alt="Happy Dog" />
+            ) : (
+              <img src={sadDogImage} alt="Sad Dog" />
+            )}
           </li>
         ))}
       </ul>

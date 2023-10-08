@@ -1,3 +1,5 @@
+//src\App.js
+
 import "bootswatch/dist/minty/bootstrap.min.css";
 // TODO: Note: Replace ^[theme]^ (examples: darkly, slate, cosmo, spacelab, and superhero. See https://bootswatch.com/ for current theme names.)
 import "./bootstrap.min.css";

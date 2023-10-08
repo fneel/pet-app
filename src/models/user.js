@@ -1,3 +1,5 @@
+//src\models\user.js
+
 export class UserModel {
   static nextId = 1; // Startvärde för UserModel ID
 

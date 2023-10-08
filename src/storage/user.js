@@ -1,3 +1,5 @@
+//src\storage\user.js
+
 export function saveUsers(users) {
   // Uppdatera användarobjektens format innan du sparar dem
   const formattedUsers = users.map((user) => ({

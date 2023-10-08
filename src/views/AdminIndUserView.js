@@ -1,19 +1,28 @@
+//src\views\AdminIndUserView.js
+
+
 import React from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { usersState, checkedState } from "../states";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 export function AdminIndUserView() {
-  // Hämta listan med användare från Recoil
-  const users = useRecoilValue(usersState);
+  const [users, setUsers] = useRecoilState(usersState);
   const { id } = useParams();
   const isCompleted = useRecoilValue(checkedState);
+  const navigate = useNavigate();
 
-  // Hitta den specifika användaren med hjälp av id
+  const handleDeleteUser = () => {
+    // Filtrera ut användaren som ska tas bort
+    const updatedUsers = users.filter((user) => user.id !== parseInt(id));
+    setUsers(updatedUsers);
+    // Navigera tillbaka till AdminUsersView
+    navigate("/admin/users");
+  };
+
   const indUser = users.find((user) => user.id === parseInt(id));
 
   if (!indUser) {
-    // Hantera om användaren inte hittades
     return <div>Användaren hittades inte.</div>;
   }
 
@@ -34,6 +43,7 @@ export function AdminIndUserView() {
           </li>
         ))}
       </ul>
+      <button onClick={handleDeleteUser}>Ta bort användare</button>
     </div>
   );
 }
